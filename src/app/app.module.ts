@@ -8,18 +8,23 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LogsComponent } from './logs/logs.component';
 import { RouterModule, Routes } from '@angular/router';
+import { JobsComponent } from './jobs/jobs.component';
+import { BugsComponent } from './bugs/bugs.component';
 
 const appRoutes : Routes = [
   {
     path: 'dashboard', component: HeaderComponent, 
     children: [
       { path: 'home', component: HomeComponent},
-      { path: 'h', component: HomeComponent},
-      { path: 'logs', component: LogsComponent}
+      { path: 'jobs', component: JobsComponent},
+      { path: 'logs', component: LogsComponent},
+      { path: 'bugs', component: BugsComponent}
+      
     ]
   },
+  { path: '**', redirectTo: '/login', pathMatch:'full' },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/login', pathMatch:'full' }
+
 ];
 @NgModule({
   declarations: [
@@ -27,13 +32,16 @@ const appRoutes : Routes = [
     LoginComponent,
     HeaderComponent,
     HomeComponent,
-    LogsComponent
+    LogsComponent,
+    JobsComponent,
+    BugsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports : [RouterModule]
 })
 export class AppModule { }

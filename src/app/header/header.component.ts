@@ -22,4 +22,11 @@ export class HeaderComponent {
   logMeOut(){
     this.router.navigateByUrl('login');
   }
+
+  redirectToJobs(){
+    this.router.navigateByUrl('dashboard/jobs');
+  }
+  redirectToBugs(){
+    this.router.navigateByUrl('dashboard/bugs');
+  }
 }
